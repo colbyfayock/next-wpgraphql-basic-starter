@@ -30,7 +30,7 @@ export default function Home({ page, posts }) {
                     <h3 dangerouslySetInnerHTML={{
                       __html: post.title
                     }} />
-                    <p dangerouslySetInnerHTML={{
+                    <div dangerouslySetInnerHTML={{
                       __html: post.excerpt
                     }} />
                   </a>
