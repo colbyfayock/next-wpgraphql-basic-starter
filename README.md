@@ -1,4 +1,4 @@
-# Next.js WordPress Starter
+# Next.js WPGraphQL Basic Starter
 
 ## ⚡️ Quick Start
 
