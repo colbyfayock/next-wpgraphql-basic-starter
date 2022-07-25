@@ -53,6 +53,7 @@ export default function Home({ page, posts }) {
 }
 
 export async function getStaticProps() {
+  console.log('<< index.js - getStaticProps')
   const apolloClient = getApolloClient();
 
   const data = await apolloClient.query({
@@ -76,12 +77,16 @@ export async function getStaticProps() {
     `,
   });
 
+
+
   const posts = data?.data.posts.edges.map(({ node }) => node).map(post => {
     return {
       ...post,
       path: `/posts/${post.slug}`
     }
   });
+
+  console.log('posts', posts.map(({ slug }) => slug).join(', '));
 
   const page = {
     ...data?.data.generalSettings
