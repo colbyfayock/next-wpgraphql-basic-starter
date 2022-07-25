@@ -39,7 +39,10 @@ export default function Post({ post, site }) {
 }
 
 export async function getStaticProps({ params = {} } = {}) {
+  console.log('<< [postSlug].js - getStaticProps')
   const { postSlug } = params;
+
+  console.log('postSlug', postSlug)
 
   const apolloClient = getApolloClient();
 
@@ -64,6 +67,8 @@ export async function getStaticProps({ params = {} } = {}) {
 
   const post = data?.data.postBy;
 
+  console.log('post.title', post.title)
+
   const site = {
     ...data?.data.generalSettings
   }
@@ -77,6 +82,7 @@ export async function getStaticProps({ params = {} } = {}) {
 }
 
 export async function getStaticPaths() {
+  console.log('<< [postSlug].js - getStaticPaths')
   const apolloClient = getApolloClient();
 
   const data = await apolloClient.query({
@@ -96,6 +102,8 @@ export async function getStaticPaths() {
   });
 
   const posts = data?.data.posts.edges.map(({ node }) => node);
+
+  console.log('posts', posts.map(({ slug }) => slug).join(', '));
 
   return {
     paths: posts.map(({ slug }) => {
