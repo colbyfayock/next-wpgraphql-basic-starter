@@ -64,6 +64,13 @@ export async function getStaticProps({ params = {} } = {}) {
 
   const post = data?.data.postBy;
 
+  if ( !post ) {
+    return {
+      props: {},
+      notFound: true
+    }
+  }
+
   const site = {
     ...data?.data.generalSettings
   }
@@ -77,34 +84,8 @@ export async function getStaticProps({ params = {} } = {}) {
 }
 
 export async function getStaticPaths() {
-  const apolloClient = getApolloClient();
-
-  const data = await apolloClient.query({
-    query: gql`
-      {
-        posts(first: 10000) {
-          edges {
-            node {
-              id
-              title
-              slug
-            }
-          }
-        }
-      }
-    `,
-  });
-
-  const posts = data?.data.posts.edges.map(({ node }) => node);
-
   return {
-    paths: posts.map(({ slug }) => {
-      return {
-        params: {
-          postSlug: slug
-        }
-      }
-    }),
-    fallback: false
+    paths: [],
+    fallback: 'blocking'
   }
 }
