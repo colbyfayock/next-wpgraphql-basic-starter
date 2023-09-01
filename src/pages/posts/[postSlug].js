@@ -28,9 +28,7 @@ export default function Post({ post, site }) {
 
         <p className={styles.backToHome}>
           <Link href="/">
-            <a>
-              &lt; Back to home
-            </a>
+            &lt; Back to home
           </Link>
         </p>
       </main>

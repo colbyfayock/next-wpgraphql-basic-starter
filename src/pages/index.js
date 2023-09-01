@@ -26,11 +26,9 @@ export default function Home({ page, posts }) {
             return (
               <li key={post.slug} className={styles.card}>
                 <Link href={post.path}>
-                  <a>
-                    <h3 dangerouslySetInnerHTML={{
-                      __html: post.title
-                    }} />
-                  </a>
+                  <h3 dangerouslySetInnerHTML={{
+                    __html: post.title
+                  }} />
                 </Link>
                 <div dangerouslySetInnerHTML={{
                   __html: post.excerpt
