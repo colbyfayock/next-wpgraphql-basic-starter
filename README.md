@@ -16,3 +16,9 @@ Add an `.env.local` file to the root with the following:
 ```
 WORDPRESS_GRAPHQL_ENDPOINT="http://yourhost.com/graphql"
 ```
+
+In some cases, the above may not work.
+Change it as follows:
+```
+WORDPRESS_GRAPHQL_ENDPOINT="http://yourhost.com/index.php?graphql
+```
